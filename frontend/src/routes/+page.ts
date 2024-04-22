@@ -5,10 +5,11 @@ import { zod } from "sveltekit-superforms/adapters";
  
 export const load: PageLoad = async () => {
 
-  const todos: string[]= [];
+  const todos: string[]= localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')!) : [];
+
 
   return {
     form: await superValidate(zod(formSchema)),
-   todos
+    todos
   };
 };

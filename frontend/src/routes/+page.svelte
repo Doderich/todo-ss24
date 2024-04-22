@@ -20,17 +20,16 @@
  
   const { form: formData, enhance } = form;
 
-
     const createTodo = (event: SubmitEvent) => {
         const formData = new FormData(event.target);
-        console.log(formData.get("text"));
-        const todo: string = "todo";
+        const todo: string = formData.get("text") as string;
+        localStorage.setItem("todos", JSON.stringify([...data.todos, todo]));
         data.todos.push(todo);
-    
     };
 
     const deleteTodo = (text:string) => {
         const index = data.todos.findIndex((todo: string) => todo === text);
+        localStorage.setItem("todos", JSON.stringify(data.todos.filter((todo: string) => todo !== text)));
         data.todos.splice(index, 1);
     };
 
