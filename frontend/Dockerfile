@@ -11,6 +11,6 @@ WORKDIR /app
 COPY --from=builder /staging/package.json /staging/pnpm-lock.yaml  /app/
 COPY --from=builder /staging/node_modules /app/node_modules
 COPY --from=builder /staging/build /app/build
-ENV ORIGIN=http://localhost:3000 
+ENV ORIGIN=http://0.0.0.0:3000
 EXPOSE 3000
-CMD ["node", "/app/build/index.js"]
+CMD [  "node", "/app/build/index.js"]

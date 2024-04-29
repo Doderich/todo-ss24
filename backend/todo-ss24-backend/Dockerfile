@@ -12,5 +12,6 @@ RUN pnpm install
 COPY . . 
 EXPOSE 5000
 
+RUN npx prisma migrate deploy 
 RUN npx prisma generate
 CMD [ "pnpm", "run", "dev" ]

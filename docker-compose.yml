@@ -2,7 +2,7 @@ version: "3"
 services:
   todo-backend:
       build:
-        context: /backend/todo-ss24-backend
+        context: ./backend/todo-ss24-backend
       user: "node"
       environment:
         - NODE_ENV=production
@@ -14,7 +14,7 @@ services:
   todo-frontend:
     # The name of the image that will be created when building this container
     build:
-      context: /frontend
+      context: ./frontend
     user: "node"
     environment:
       # Internal server error messages will not send stacktrace to the browser in production
@@ -26,6 +26,8 @@ services:
     # Points to a file with the sensitive environment variables
     ports:
       - 3000:3000
+    depends_on:
+      - todo-backend
   
  
     

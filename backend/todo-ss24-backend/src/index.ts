@@ -8,6 +8,7 @@ app.use(express.json())
 
 app.post(`/todos/:todoString`, async (req, res) => {
   const todoString: string = req.params.todoString;
+  console.log(todoString)
   const todo = await prisma.toDo.create({
     data:{
       todo: todoString
@@ -23,6 +24,7 @@ app.get(`/todos`, async (req, res) => {
 
 app.delete(`/todos/:todoString`, async (req, res) => {
   const todoString: string = req.params.todoString;
+  console.log(todoString)
   console.log(todoString)
   const todo = await prisma.toDo.deleteMany({
     where: {
