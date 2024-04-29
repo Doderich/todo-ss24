@@ -10,8 +10,8 @@ COPY pnpm-lock.yaml ./
 
 RUN pnpm install
 COPY . . 
-EXPOSE 5000
-
-RUN npx prisma migrate deploy 
+EXPOSE 3000
+RUN chmod 777 /app/prisma/*
+RUN npx prisma migrate dev 
 RUN npx prisma generate
 CMD [ "pnpm", "run", "dev" ]

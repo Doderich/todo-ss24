@@ -1,9 +1,10 @@
 version: "3"
 services:
+
+
   todo-backend:
       build:
         context: ./backend/todo-ss24-backend
-      user: "node"
       environment:
         - NODE_ENV=production
         - TZ=Europe/Berlin

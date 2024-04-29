@@ -34,7 +34,7 @@
                 <Form.Button>Submit</Form.Button>
             </div>
         </form>
-        <div class="w-full flex items-start justify-start flex-col">
+        <div class="w-full flex items-start justify-start flex-col gap-2">
             {#each data.todos as todo}
                 <Todo
                     {todo}
