@@ -19,7 +19,7 @@ app.post(`/todos/:todoString`, async (req, res) => {
 
 app.get(`/todos`, async (req, res) => {
   const todo = await prisma.toDo.findMany()
-  res.json(todo)
+  res.json(todo.map((todo) => todo.todo))
 })
 
 app.delete(`/todos/:todoString`, async (req, res) => {
