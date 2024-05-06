@@ -42,3 +42,27 @@ Make sure the docker daemon is running.
 2. Run `docker-compose up` in the root of the project
 3. The app should be running on `http://localhost:3000`
 4. To stop the app, run `docker-compose down`
+
+### Frontend
+
+1. Go into the frontend directory
+2. Run Docker build
+```bash
+docker build -t todo-ss24-frontend .
+```
+3. Run Docker build
+```bash
+docker run -d -p 3000:3000 -e API_URL='http://localhost:3001' todo-ss24-frontend
+```
+
+### Backend
+
+1. Go into the backend directory
+2. Run Docker build
+```bash
+docker build -t todo-ss24-backend .
+```
+3. Run Docker build
+```bash
+docker run -d -p 3001:3000 -e PORT=3000 todo-ss24-backend
+```
