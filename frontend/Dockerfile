@@ -2,7 +2,6 @@ FROM node:20-alpine AS builder
 WORKDIR /staging
 COPY . /staging/
 ENV NODE_ENV=production
-ENV API_URL=http://localhost:3001
 RUN corepack enable && \
   pnpm install --frozen-lockfile && \
   pnpm build && \

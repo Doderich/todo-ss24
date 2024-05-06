@@ -50,7 +50,10 @@ Make sure the docker daemon is running.
 ```bash
 docker build -t todo-ss24-frontend .
 ```
+
 3. Run Docker build
+
+make sure to replace the API_URL with your address
 ```bash
 docker run -d -p 3000:3000 -e API_URL='http://localhost:3001' todo-ss24-frontend
 ```
