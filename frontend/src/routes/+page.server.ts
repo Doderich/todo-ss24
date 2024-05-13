@@ -22,7 +22,7 @@ export const actions: Actions = {
       });
     }
 
-    const res = await fetch(`${env.PUBLIC_API_URL}/todos/${form.data.text}`, {
+    const res = await fetch(`${env.API_URL}/todos/${form.data.text}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const actions: Actions = {
       });
     }
 
-    const todos: Todo[] = await fetch(`${env.PUBLIC_API_URL}/todos`).then(res => res.json());
+    const todos: Todo[] = await fetch(`${env.API_URL}/todos`).then(res => res.json());
     return {
       form,
       todos,
@@ -52,7 +52,7 @@ export const actions: Actions = {
       });
     }
 
-    const res = await fetch(`${env.PUBLIC_API_URL}/todos/${form.data.text}`, {
+    const res = await fetch(`${env.API_URL}/todos/${form.data.text}`, {
       method: "DELETE",
     });
 
@@ -60,7 +60,7 @@ export const actions: Actions = {
       return fail(res.status);
     }
 
-    const todos: Todo[] = await fetch(`${env.PUBLIC_API_URL}/todos`).then(res => res.json());
+    const todos: Todo[] = await fetch(`${env.API_URL}/todos`).then(res => res.json());
     return {
       todos,
     };

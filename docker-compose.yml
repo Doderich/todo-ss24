@@ -3,6 +3,7 @@ services:
 
 
   todo-backend:
+      image: d0derich/todo-ss24-backend
       build:
         context: ./backend/todo-ss24-backend
       environment:
@@ -14,6 +15,7 @@ services:
 
   todo-frontend:
     # The name of the image that will be created when building this container
+    image: d0derich/todo-ss24-frontend
     build:
       context: ./frontend
     user: "node"

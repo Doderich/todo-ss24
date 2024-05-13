@@ -2,7 +2,16 @@
 
 This is a simple todo app that allows you to add and remove tasks.
 
+
+
 ## Get started
+
+If you just want to start the project just `docker compose up` in the root of the project 
+
+```bash
+docker compose up
+```
+
 
 
 ### Frontend
