@@ -3,6 +3,7 @@ services:
 
 
   todo-backend:
+      image: d0derich/todo-ss24-backend
       build:
         context: ./backend/todo-ss24-backend
       image: d0derich/todo-ss24-backend:latest
@@ -15,6 +16,7 @@ services:
 
   todo-frontend:
     # The name of the image that will be created when building this container
+    image: d0derich/todo-ss24-frontend
     build:
       context: ./frontend
     image: d0derich/todo-ss24-frontend:latest

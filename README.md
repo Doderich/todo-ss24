@@ -2,7 +2,16 @@
 
 This is a simple todo app that allows you to add and remove tasks.
 
+
+
 ## Get started
+
+If you just want to start the project just `docker compose up` in the root of the project 
+
+```bash
+docker compose up
+```
+
 
 
 ### Frontend
@@ -52,7 +61,10 @@ Make sure the docker daemon is running.
 ```bash
 docker build -t todo-ss24-frontend .
 ```
+
 3. Run Docker build
+
+make sure to replace the API_URL with your address
 ```bash
 docker run -d -p 3000:3000 -e API_URL='http://localhost:3001' todo-ss24-frontend
 ```
