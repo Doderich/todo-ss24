@@ -38,8 +38,10 @@ npx prisma migrate deploy
 To run the app using docker, you need to have docker installed on your machine.
 Make sure the docker daemon is running.
 
+
+
 1. Clone the repository
-2. Run `docker-compose up` in the root of the project
+2. Run `docker-compose up` in the root of the project (If you want to build the docker images yourself you can first use `docker-compose build`)
 3. The app should be running on `http://localhost:3000`
 4. To stop the app, run `docker-compose down`
 

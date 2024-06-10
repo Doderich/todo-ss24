@@ -5,6 +5,7 @@ services:
   todo-backend:
       build:
         context: ./backend/todo-ss24-backend
+      image: d0derich/todo-ss24-backend:latest
       environment:
         - NODE_ENV=production
         - TZ=Europe/Berlin
@@ -16,13 +17,14 @@ services:
     # The name of the image that will be created when building this container
     build:
       context: ./frontend
+    image: d0derich/todo-ss24-frontend:latest
     user: "node"
     environment:
       # Internal server error messages will not send stacktrace to the browser in production
       - NODE_ENV=production
       # Sets the timezone of the containers OS
       - TZ=Europe/Berlin
-      - PUBLIC_API_URL=http://todo-backend:3001
+      - API_URL=http://todo-backend:3001
       - ORIGIN=http://127.0.0.1:3000
     # Points to a file with the sensitive environment variables
     ports:
