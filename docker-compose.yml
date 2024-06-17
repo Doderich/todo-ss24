@@ -1,17 +1,31 @@
 version: "3"
 services:
 
+  todo-db:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres_pw
+      - POSTGRES_USER=postgres_user
+      - POSTGRES_DB=postgres_db
 
   todo-backend:
       build:
-        context: ./backend/todo-ss24-backend
+        context: ./backend
       image: d0derich/todo-ss24-backend:latest
+      command: sh -c "pnpm dlx prisma migrate dev && pnpm run dev"
       environment:
         - NODE_ENV=production
         - TZ=Europe/Berlin
         - PORT=3001
+        - DATABASE_URL=postgresql://postgres_user:postgres_pw@todo-db:5432/postgres_db
       ports:
         - 3001:3001
+      depends_on:
+        - todo-db
 
   todo-frontend:
     # The name of the image that will be created when building this container
