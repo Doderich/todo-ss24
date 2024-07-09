@@ -31,7 +31,7 @@ services:
     # The name of the image that will be created when building this container
     build:
       context: ./frontend
-    image: d0derich/todo-ss24-frontend:latest
+    image: disgame/lab:todo-web
     user: "node"
     environment:
       # Internal server error messages will not send stacktrace to the browser in production
@@ -45,6 +45,5 @@ services:
       - 3000:3000
     depends_on:
       - todo-backend
-  
  
     

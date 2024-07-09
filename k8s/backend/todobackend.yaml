@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todobackend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: todobackend
+  template:
+    metadata:
+      name: todobackend
+      labels:
+        app: todobackend
+        tier: backend
+    spec:
+      containers:
+        - name: todobackend
+          livenessProbe:
+            httpGet:
+              path: /todos/
+              port: 3001
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            failureThreshold: 3
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3001"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-security
+                  key: db.user.name
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-security
+                  key: db.user.password
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres.db.name
+            - name: DATABASE_URL
+              value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgresdb:5432/$(POSTGRES_DB)
+          command:
+            - sh
+            - -c
+            - "pnpm dlx prisma migrate deploy && pnpm run dev"
+          image: d0derich/todo-ss24-backend:latest
+      restartPolicy: Always
